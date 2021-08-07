@@ -1,7 +1,7 @@
 config = {
     'multichoice': True,
     'extractor_batch_size': 384,
-    'model_name': 'temporal_graph',
+    'model_name': 'multi_choice',
     'log_path': 'data/log',
     'tokenizer': 'nltk',
     'batch_sizes': (12, 12, 12),
@@ -13,10 +13,10 @@ config = {
     'subtitle_path': 'data/AnotherMissOh/AnotherMissOh_subtitles.json',
     'vocab_pretrained': "glove.6B.300d",
     'video_type': ['shot', 'scene'],
-    'feature_pooling_method': 'max',
-    'max_epochs': 30,
+    'feature_pooling_method': 'mean',
+    'max_epochs': 20,
     'allow_empty_images': False,
-    'num_workers': 100,
+    'num_workers': 40,
     'image_dim': 512,  # hardcoded for ResNet50
     'n_dim': 256,
     'layers': 3,
@@ -34,7 +34,7 @@ config = {
 
 
 debug_options = {
-   # 'image_path': './data/images/samples',
+    # 'image_path': './data/images/samples',
 }
 
 log_keys = [
