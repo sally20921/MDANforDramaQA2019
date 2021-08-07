@@ -7,17 +7,13 @@ from .acc_model import Encoder, Decoder
 
 
 class TemporalGraph(nn.Module):
-    def __init__(self, args, vocab, n_dim, image_dim, layers, dropout, num_choice=5):
+    def __init__(self, vocab, n_dim, image_dim, layers, dropout):
         super().__init__()
-
-        self.text_feature_names = args.text_feature_names
-        self.feature_names = args.use_inputs
 
         self.vocab = vocab
         V = len(vocab)
         D = n_dim
         self.layers = layers
-
         self.text_embedder = nn.Embedding(V, D)
         self.image_encoder = ImageEncoder(image_dim, D)
         #self.fusers = nn.Sequential(*[AttFuser(D) for i in range(1)])
@@ -29,9 +25,9 @@ class TemporalGraph(nn.Module):
 
     @classmethod
     def resolve_args(cls, args, vocab):
-        return cls(args, vocab, args.n_dim, args.image_dim, args.layers, args.dropout)
+        return cls(vocab, args.n_dim, args.image_dim, args.layers, args.dropout)
 
-    def forward(self, que, images, answers, **features):
+    def forward(self, que, images, answers):
         q = self.text_embedder(que)
         a = self.text_embedder(answers)
         q, h = self.question_encoder(q)
