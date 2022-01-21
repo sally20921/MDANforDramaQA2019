@@ -9,7 +9,7 @@ greenlet==0.4.15
 idna==2.8
 inflection==0.3.1
 ipdb==0.12
-ipython==7.5.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 jedi==0.13.3
 msgpack==0.6.1
